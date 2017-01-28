@@ -4,13 +4,14 @@ import apple.laf.JRSUIUtils;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by zizhengli on 1/24/17.
  */
 public class TreeUtils {
 
-    public static TreeNode buildTree(String... nodes) {
+    public static TreeNode buildTree(Integer... nodes) {
         if(nodes == null || nodes.length == 0) {
             return null;
         }
@@ -29,20 +30,20 @@ public class TreeUtils {
                 // Add left child
                 index++;
                 if(index < nodes.length) {
-                    if(nodes[index].equals("null")) {
+                    if(nodes[index] == null) {
                         curr.left = null;
                     } else {
-                        curr.left = new TreeNode(Integer.valueOf(nodes[index]));
+                        curr.left = new TreeNode(nodes[index]);
                     }
                     queue.add(curr.left);
                 }
                 // Add right child
                 index++;
                 if(index < nodes.length) {
-                    if(nodes[index].equals("null")) {
+                    if(nodes[index] == null) {
                         curr.right = null;
                     } else {
-                        curr.right = new TreeNode(Integer.valueOf(nodes[index]));
+                        curr.right = new TreeNode(nodes[index]);
                     }
                     queue.add(curr.right);
                 }
@@ -51,19 +52,24 @@ public class TreeUtils {
         return root;
     }
 
-    private static TreeNode buildTreeHelper(String[] nodes, int index) {
-        if(index >= nodes.length) {
-            return null;
-        }
-        TreeNode curr = null;
-        if(nodes[index].equals("null")) {
-            return curr;
-        }
+    public static TreeNode getTreeNodeByValue(TreeNode root, int target) {
 
-        curr = new TreeNode(Integer.valueOf(nodes[index]));
-        curr.left = buildTreeHelper(nodes, index + 1);
-        curr.right = buildTreeHelper(nodes, index + 2);
-        return curr;
+        Stack<TreeNode> stack = new Stack();
+        TreeNode curr = root;
+
+        while(!stack.isEmpty() || curr != null) {
+            if(curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            } else {
+                curr = stack.pop();
+                if(curr.val == target) {
+                    return curr;
+                }
+                curr = curr.right;
+            }
+        }
+        return null;
     }
 
     public static void printTree(TreeNode head) {
