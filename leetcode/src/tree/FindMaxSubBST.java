@@ -55,7 +55,7 @@ public class FindMaxSubBST {
 
     public static void main(String[] arg) {
 
-        String[] tree = {"10", "7", "18", "10", "8", "2", "11", "2", "4", "null", "null", "1", "3", "null", "null", "1"};
+        Integer[] tree = {10, 7, 18, 10, 8, 2, 11, 2, 4, null, null, 1, 3, null, null, 1};
         TreeNode root = TreeUtils.buildTree(tree);
         TreeUtils.printTree(root);
         TreeNode maxSubBST = FindMaxSubBST.findMaxSubBST(root);

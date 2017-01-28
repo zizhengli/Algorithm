@@ -90,8 +90,8 @@ public class CheckIdenticalTreeInAnother {
     }
 
     public static void main(String[] args) {
-        TreeNode t1 = TreeUtils.buildTree("1", "2", "3", "4", "5", "6", "7");
-        TreeNode t2 = TreeUtils.buildTree("3", "6", "7");
+        TreeNode t1 = TreeUtils.buildTree(1, 2, 3, 4, 5, 6, 7);
+        TreeNode t2 = TreeUtils.buildTree(3, 6, 7);
         System.out.println(CheckIdenticalTreeInAnother.checkIdenticalTree(t1, t2));
     }
 }

@@ -46,7 +46,7 @@ public class CheckCompleteBinaryTree {
 
     public static void main(String[] args) {
 
-        String[] tree = {"1", "2", "3", "4", "null", "6", "7"};
+        Integer[] tree = {1, 2, 3, 4, null, 6, 7};
         TreeNode root = TreeUtils.buildTree(tree);
         System.out.println(CheckCompleteBinaryTree.isCompleteBinaryTree(root));
 

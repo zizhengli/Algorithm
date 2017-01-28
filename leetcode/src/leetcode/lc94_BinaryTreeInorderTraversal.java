@@ -68,7 +68,7 @@ public class lc94_BinaryTreeInorderTraversal {
 
     public static void main(String[] args) {
 
-        String[] nodes = {"1", "2", "3", "4", "5", "6", "7"};
+        Integer[] nodes = {1, 2, 3, 4, 5, 6, 7};
         TreeNode root = TreeUtils.buildTree(nodes);
 
         List<Integer> result1 = lc94_BinaryTreeInorderTraversal.inorderTraversal(root);

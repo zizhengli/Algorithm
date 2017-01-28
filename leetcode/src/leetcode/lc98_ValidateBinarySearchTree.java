@@ -37,7 +37,7 @@ public class lc98_ValidateBinarySearchTree {
 
     public static void main(String[] args) {
 
-        TreeNode root = TreeUtils.buildTree("2", "1", "1");
+        TreeNode root = TreeUtils.buildTree(2, 1, 1);
         System.out.println(lc98_ValidateBinarySearchTree.isValidBST(root));
     }
 }

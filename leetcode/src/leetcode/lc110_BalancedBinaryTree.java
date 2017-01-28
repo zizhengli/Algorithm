@@ -40,7 +40,7 @@ public class lc110_BalancedBinaryTree {
 
     public static void main(String[] args) {
 
-        TreeNode root = TreeUtils.buildTree("1", "2", "3", "4", "5");
+        TreeNode root = TreeUtils.buildTree(1, 2, 3, 4, 5);
         System.out.println(lc110_BalancedBinaryTree.isBalanced(root));
     }
 }
