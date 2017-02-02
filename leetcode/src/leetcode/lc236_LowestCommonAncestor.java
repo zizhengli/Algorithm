@@ -8,6 +8,8 @@ import utils.TreeUtils;
  */
 public class lc236_LowestCommonAncestor {
 
+    public static int intA = 0;
+
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null) {
             return null;
