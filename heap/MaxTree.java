@@ -1,7 +1,7 @@
-package heap;
+package src.heap;
 
-import utils.TreeNode;
-import utils.TreeUtils;
+import src.utils.TreeNode;
+import src.utils.TreeUtils;
 
 /**
  * 一个数组的MaxTree定义如下

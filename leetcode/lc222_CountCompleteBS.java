@@ -1,7 +1,7 @@
-package leetcode;
+package src.leetcode;
 
-import utils.TreeNode;
-import utils.TreeUtils;
+import src.utils.TreeNode;
+import src.utils.TreeUtils;
 
 /**
  * Created by zizhengli on 1/28/17.

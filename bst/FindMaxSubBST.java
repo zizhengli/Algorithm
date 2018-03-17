@@ -1,10 +1,10 @@
-package tree;
+package src.BST;
 
 /**
  * Created by zizhengli on 1/26/17.
  */
-import utils.TreeNode;
-import utils.TreeUtils;
+import src.utils.TreeNode;
+import src.utils.TreeUtils;
 
 /**
  * 给定一棵二叉树的头节点head,已知其中所有节点的值都不一样,找 到含有节点最多的搜索二叉子树,并返回这棵子树的头节点

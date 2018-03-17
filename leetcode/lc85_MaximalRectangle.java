@@ -1,4 +1,4 @@
-package leetcode;
+package src.leetcode;
 
 /**
  * 1 0 1 0 0

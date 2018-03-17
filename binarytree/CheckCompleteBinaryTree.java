@@ -1,7 +1,7 @@
-package tree;
+package src.binarytree;
 
-import utils.TreeNode;
-import utils.TreeUtils;
+import src.utils.TreeNode;
+import src.utils.TreeUtils;
 
 import java.util.LinkedList;
 import java.util.Queue;

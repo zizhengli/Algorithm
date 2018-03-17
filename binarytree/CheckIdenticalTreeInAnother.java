@@ -1,11 +1,11 @@
-package tree;
+package src.binarytree;
 
 /**
  * Created by zizhengli on 1/25/17.
  */
 
-import utils.TreeNode;
-import utils.TreeUtils;
+import src.utils.TreeNode;
+import src.utils.TreeUtils;
 
 /**
  * 给定彼此独立的两棵树头节点分别为t1和t2,判断t1中是否有与t2树值 的拓扑结构完全相同的子树

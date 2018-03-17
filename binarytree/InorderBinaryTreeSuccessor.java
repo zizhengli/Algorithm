@@ -1,6 +1,4 @@
-package tree;
-
-import utils.TreeNode;
+package src.binarytree;
 
 /**
  * Created by zizhengli on 1/26/17.

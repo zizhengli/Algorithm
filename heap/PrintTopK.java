@@ -1,6 +1,6 @@
-package heap;
+package src.heap;
 
-import utils.ArrayUtils;
+import src.utils.ArrayUtils;
 
 import java.util.HashMap;
 
