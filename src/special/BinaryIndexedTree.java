@@ -25,7 +25,7 @@ public class BinaryIndexedTree {
             // to sum
             sum += BITree[index];
 
-            System.out.println("index : " + index);
+            //System.out.println("index : " + index);
 
             // Move index to parent node in
             // getSum View
@@ -35,18 +35,20 @@ public class BinaryIndexedTree {
     }
 
     public static void updateBIT(int n, int index, int val) {
-        // index in BITree[] is 1 more than
-        // the index in arr[]
+        // Turn index number into integer number
         index = index + 1;
 
-        // Traverse all ancestors and add 'val'
+        // Traverse all ancestors of current index number
         while(index <= n) {
             // Add 'val' to current node of BIT Tree
             BITree[index] += val;
 
             // Update index to that of parent
             // in update View
+            System.out.print(index + " ");
             index += index & (-index);
+            System.out.print(index);
+            System.out.println();
         }
     }
 
@@ -68,9 +70,9 @@ public class BinaryIndexedTree {
 
         // Build fenwick tree from given array
         tree.constructBITree(freq, n);
-        /*for(int i = 0; i < BITree.length; i++) {
+        for(int i = 0; i < BITree.length; i++) {
             System.out.print(BITree[i] + " ");
-        }*/
+        }
 
         System.out.println("Sum of elements in arr[0..5]" + " is = "+ tree.getSum(5));
 
@@ -81,6 +83,6 @@ public class BinaryIndexedTree {
         //updateBIT(n, 3, 6);
 
         // Find sum after the value is updated
-        System.out.println("Sum of elements in arr[0..5]" + " after update is = " + tree.getSum(5));
+        //System.out.println("Sum of elements in arr[0..5]" + " after update is = " + tree.getSum(5));
     }
 }

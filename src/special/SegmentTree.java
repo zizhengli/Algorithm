@@ -35,7 +35,7 @@ public class SegmentTree {
 
 
     int query(int rangeIdx, int qStart, int qEnd, int start, int end) {
-        if(qStart > end || qEnd < start) { // If the query range is competely out of segment tree range
+        if(qStart > end || qEnd < start) { // If the query range is completely out of segment tree range
             return 0;
         }
         if(qStart <= start && qEnd >= end) { // If the segment tree range is completely inside query range
@@ -44,13 +44,13 @@ public class SegmentTree {
         int mid = start + (end - start) / 2;
 
         if(qStart > mid) {
-            /*                        qStart        qEnd
-            *   start            mid         end
+            /*                      qStart        qEnd
+            *   start          mid         end
             * */
             return query(2 * rangeIdx + 2, qStart, qEnd, mid + 1, end);
         } else if (qEnd <= mid) {
-            /* qStart        qEnd
-            *        start          mid         end
+            /* qStart            qEnd
+            *        start        mid         end
             * */
             return query(2 * rangeIdx + 1, qStart, qEnd, start, mid);
         }
