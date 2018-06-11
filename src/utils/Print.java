@@ -1,7 +1,14 @@
 package utils;
 
 /**
- * Created by lim20 on 6/7/2018.
+ *
  */
 public class Print {
+
+    public static void printArray(int[] array) {
+        for(int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
 }
