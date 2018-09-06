@@ -6,7 +6,7 @@ import java.util.*;
 
 /**
  * A simple example of implementing consistent hash.
- * 1. Using TreeMap to store all key values in order and find the nearest node(virtual) by getting tailmap.
+ * 1. Using RedBlackTree to store all key values in order and find the nearest node(virtual) by getting tailmap.
  * 2. Adding a limited number of virtual node when adding a new physical node to distribute evenly requests.
  * 3. Using a hashmap to map physical node to several virtual nodes for quick find.
  */

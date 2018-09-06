@@ -36,7 +36,7 @@ public class UnionFind {
                 return true;
             }
             union(parent, x, y);
-            Print.printArray(parent);
+            Print.print(parent);
         }
         return false;
     }
