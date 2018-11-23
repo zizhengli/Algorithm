@@ -127,6 +127,7 @@ public class MinHeap {
         heap.insert(5);
         heap.insert(8);
         heap.insert(4);
+        heap.insert(11);
 
         while(heap.size > 0) {
             System.out.println(heap.extractMin());

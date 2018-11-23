@@ -116,15 +116,15 @@ public class RedBlackTree {
         root.color = Color.BLACK;
     }
 
-    public RedBlackTreeNode remove(int value) {
+    /*public RedBlackTreeNode remove(int value) {
         RedBlackTreeNode p = getNode(value);
         if(p == null) {
             return null;
         }
         RedBlackTreeNode oldNode = p;
-        deleteNode(p);
+        //deleteNode(p);
         return oldNode;
-    }
+    }*/
 
 
 
