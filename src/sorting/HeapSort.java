@@ -21,6 +21,28 @@ public class HeapSort {
     }
 
     private static void heapify(int[] array, int index, int size) {
+        int left = 0;
+        int right = 0;
+        int largest = index;
+        while(index >= 0) {
+            left = 2 * index + 1;
+            right = 2 * index + 2;
+            if(left < size && array[largest] < array[left]) {
+                largest = left;
+            }
+            if(right < size && array[largest] < array[right]) {
+                largest = right;
+            }
+            if(largest != index) {
+                Swap.swap(array, largest, index);
+                index = largest;
+            } else {
+                break;
+            }
+        }
+    }
+
+    private static void heapifyRecursive(int[] array, int index, int size) {
         int max = index;
         int left = 2 * index + 1;
         int right = 2 * index + 2;
@@ -33,7 +55,7 @@ public class HeapSort {
         }
         if(max != index) {
             Swap.swap(array, max, index);
-            heapify(array, max, size);
+            heapifyRecursive(array, max, size);
         }
     }
 
