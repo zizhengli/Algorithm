@@ -1,6 +1,6 @@
 package sorting;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +45,6 @@ public class IntersectSortedArray {
 
         List<Integer> result = IntersectSortedArray.intersectTwoSortedArrays(Arrays.asList(2,3,3,5,5,6,7,7,8,12),
                                                                             Arrays.asList(5,5,6,8,8,9,10,10));
-        Assert.assertArrayEquals(result.toArray(new Integer[0]), new Integer[] {5,6,8});
+        //Assert.assertArrayEquals(result.toArray(new Integer[0]), new Integer[] {5,6,8});
     }
 }

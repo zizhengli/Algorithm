@@ -2,7 +2,7 @@ package binarytree;
 
 import utils.TreeNode;
 import utils.TreeUtils;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 /*
 * Variant: Write a program that returns the size of the largest subtree that is complete.
@@ -52,9 +52,9 @@ public class CheckHeightBalanced {
 
     public static void main(String[] args) {
         TreeNode root1 = TreeUtils.buildTree(3,9,20,1,2,15,7,5,6,7,8,9,9,null,null,9,0);
-        assertTrue(CheckHeightBalanced.checkHeightBalanced(root1));
+        //assertTrue(CheckHeightBalanced.checkHeightBalanced(root1));
 
         TreeNode root2 = TreeUtils.buildTree(3,9,20,1,2,15,7,5,6,null,null,9,9,null,null,9,0);
-        assertFalse(CheckHeightBalanced.checkHeightBalanced(root2));
+        //assertFalse(CheckHeightBalanced.checkHeightBalanced(root2));
     }
 }

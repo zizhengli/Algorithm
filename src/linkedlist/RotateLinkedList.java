@@ -1,7 +1,7 @@
 package linkedlist;
 
 import utils.LinkedListUtils;
-import utils.ListNode;
+import utils.LinkedNode;
 
 /**
  * 链表长度为N,如N为偶数,前N/2个节点为左区,后N/2个节点为右区;如N为奇数,
@@ -9,10 +9,10 @@ import utils.ListNode;
  */
 public class RotateLinkedList {
 
-    public static ListNode rotateLinkedList(ListNode head) {
+    public static LinkedNode rotateLinkedList(LinkedNode head) {
 
         int length = 0;
-        ListNode curr = head;
+        LinkedNode curr = head;
         while(curr != null) {
             length++;
             curr = curr.next;
@@ -23,7 +23,7 @@ public class RotateLinkedList {
 
         int rStart= length % 2 == 0 ? length - length / 2 + 1 : length - length / 2;
         int index = 1;
-        ListNode prev = null;
+        LinkedNode prev = null;
         curr = head;
         while(index < rStart) {
             prev = curr;
@@ -31,9 +31,9 @@ public class RotateLinkedList {
             index++;
         }
         prev.next = null;
-        ListNode rHead = curr;
-        ListNode lHead = head;
-        ListNode dummy = new ListNode(0);
+        LinkedNode rHead = curr;
+        LinkedNode lHead = head;
+        LinkedNode dummy = new LinkedNode(0);
         curr = dummy;
         int count = 1;
         while(lHead != null && rHead != null) {
@@ -55,7 +55,7 @@ public class RotateLinkedList {
 
     public static void main(String[] args) {
 
-        ListNode head = LinkedListUtils.buildLinkedList(1, 2, 3);
+        LinkedNode head = LinkedListUtils.buildLinkedList(1, 2, 3);
         head = rotateLinkedList(head);
         System.out.println(LinkedListUtils.printLinkedList(head));
     }

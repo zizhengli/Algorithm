@@ -1,7 +1,7 @@
 package linkedlist;
 
 import utils.LinkedListUtils;
-import utils.ListNode;
+import utils.LinkedNode;
 
 import java.util.HashSet;
 
@@ -10,11 +10,11 @@ import java.util.HashSet;
  */
 public class RemoveDuplicateNode {
 
-    public static ListNode removeDuplicateNode(ListNode head) {
+    public static LinkedNode removeDuplicateNode(LinkedNode head) {
 
         HashSet<Integer> set = new HashSet();
-        ListNode curr = head;
-        ListNode prev = null;
+        LinkedNode curr = head;
+        LinkedNode prev = null;
         while(curr != null) {
             if(set.contains(curr.val)) {
                 // Remove current node
@@ -29,7 +29,7 @@ public class RemoveDuplicateNode {
     }
 
     public static void main(String[] args) {
-        ListNode head = LinkedListUtils.buildLinkedList(3, 2, 3, 4, 3, 5, 3);
+        LinkedNode head = LinkedListUtils.buildLinkedList(3, 2, 3, 4, 3, 5, 3);
         head = removeDuplicateNode(head);
         System.out.println(LinkedListUtils.printLinkedList(head));
     }

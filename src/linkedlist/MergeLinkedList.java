@@ -1,19 +1,19 @@
 package linkedlist;
 
 import utils.LinkedListUtils;
-import utils.ListNode;
+import utils.LinkedNode;
 
 /**
  * 给定两个有序单链表的头节点h1和h2,请合并两个有序链表并返回大链表头节点
  */
 public class MergeLinkedList {
 
-    public static ListNode mergeLinkedList(ListNode head1, ListNode head2) {
+    public static LinkedNode mergeLinkedList(LinkedNode head1, LinkedNode head2) {
 
-        ListNode curr1 = head1;
-        ListNode curr2 = head2;
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
+        LinkedNode curr1 = head1;
+        LinkedNode curr2 = head2;
+        LinkedNode dummy = new LinkedNode(0);
+        LinkedNode curr = dummy;
 
         while(curr1 != null && curr2 != null) {
             if(curr1.val < curr2.val) {
@@ -31,9 +31,9 @@ public class MergeLinkedList {
 
     public static void main(String[] args) {
 
-        ListNode head1 = LinkedListUtils.buildLinkedList(2, 3, 4, 8);
-        ListNode head2 = LinkedListUtils.buildLinkedList(1, 2, 8, 9);
-        ListNode head = MergeLinkedList.mergeLinkedList(head1, head2);
+        LinkedNode head1 = LinkedListUtils.buildLinkedList(2, 3, 4, 8);
+        LinkedNode head2 = LinkedListUtils.buildLinkedList(1, 2, 8, 9);
+        LinkedNode head = MergeLinkedList.mergeLinkedList(head1, head2);
         System.out.println(LinkedListUtils.printLinkedList(head));
     }
 }

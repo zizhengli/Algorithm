@@ -1,17 +1,17 @@
 package utils;
 
 /**
- * Created by zizhengli on 1/31/17.
+ *
  */
 public class LinkedListUtils {
 
-    public static ListNode buildLinkedList(Integer... value) {
+    public static LinkedNode buildLinkedList(Integer... value) {
 
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
+        LinkedNode dummy = new LinkedNode(0);
+        LinkedNode curr = dummy;
 
         for(Integer i : value) {
-            ListNode node = new ListNode(i);
+            LinkedNode node = new LinkedNode(i);
             curr.next = node;
             curr = curr.next;
         }
@@ -34,7 +34,21 @@ public class LinkedListUtils {
         return dummy.next;
     }
 
-    public static String printLinkedList(ListNode head) {
+    public static LinkedNode bindLinkedList(LinkedNode l1, LinkedNode l2) {
+        if(l1 == null) {
+            return l2;
+        } else if(l2 == null) {
+            return l1;
+        }
+        LinkedNode current = l1;
+        while(current.next != null) {
+            current = current.next;
+        }
+        current.next = l2;
+        return l1;
+    }
+
+    public static String printLinkedList(LinkedNode head) {
         StringBuilder result = new StringBuilder();
         while(head != null) {
             result.append(head.val);
@@ -47,13 +61,13 @@ public class LinkedListUtils {
         return result.toString();
     }
 
-    public static ListNode buildCyclicLinkedList(Integer... value) {
+    public static LinkedNode buildCyclicLinkedList(Integer... value) {
 
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
+        LinkedNode dummy = new LinkedNode(0);
+        LinkedNode curr = dummy;
 
         for(Integer i : value) {
-            ListNode node = new ListNode(i);
+            LinkedNode node = new LinkedNode(i);
             curr.next = node;
             curr = curr.next;
         }
@@ -75,18 +89,15 @@ public class LinkedListUtils {
         return result.toString();
     }
 
-    public static String printCyclicLinkedList(ListNode head) {
+    public static String printCyclicLinkedList(LinkedNode head) {
         StringBuilder result = new StringBuilder();
-        ListNode curr = head;
+        LinkedNode curr = head;
         while(curr != null) {
             result.append(curr.val);
             result.append("->");
             curr = curr.next;
-            if(curr == head) {
-                result.append("head");
-                break;
-            }
         }
+        result.append("null");
         return result.toString();
     }
 }
