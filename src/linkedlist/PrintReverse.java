@@ -1,14 +1,11 @@
 package linkedlist;
 
 import utils.LinkedListUtils;
-import utils.ListNode;
+import utils.LinkedNode;
 
-/**
- *
- */
 public class PrintReverse {
 
-    static void print(ListNode node) {
+    static void print(LinkedNode node) {
         if(node == null) {
             return;
         }
@@ -18,7 +15,7 @@ public class PrintReverse {
 
     public static void main(String[] args) {
 
-        ListNode head = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5);
+        LinkedNode head = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5);
         print(head);
     }
 }

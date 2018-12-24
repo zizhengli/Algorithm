@@ -2,7 +2,7 @@ package linkedlist;
 
 import utils.DoubleListNode;
 import utils.LinkedListUtils;
-import utils.ListNode;
+import utils.LinkedNode;
 
 /**
  * 1. 分别实现反转单向链表和反转双向链表的函数
@@ -10,13 +10,13 @@ import utils.ListNode;
  */
 public class ReverseLinkedList {
 
-    public static ListNode reverseLinkedList(ListNode head) {
+    public static LinkedNode reverseLinkedList(LinkedNode head) {
         if(head == null) {
             return head;
         }
-        ListNode curr = head;
-        ListNode next = null;
-        ListNode prev = null;
+        LinkedNode curr = head;
+        LinkedNode next = null;
+        LinkedNode prev = null;
 
         while(curr != null) {
             next = curr.next;
@@ -43,10 +43,10 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    public static ListNode reversePartLinkedList(ListNode head, int from, int to) {
+    public static LinkedNode reversePartLinkedList(LinkedNode head, int from, int to) {
 
         int length = 0;
-        ListNode curr = head;
+        LinkedNode curr = head;
         while(curr != null) {
             length++;
             curr = curr.next;
@@ -55,7 +55,7 @@ public class ReverseLinkedList {
             return head;
         }
 
-        ListNode beforeFrom = new ListNode(0);
+        LinkedNode beforeFrom = new LinkedNode(0);
         beforeFrom.next = head;
         int index = 1;
         while(beforeFrom != null && index <= from - 1) {
@@ -63,7 +63,7 @@ public class ReverseLinkedList {
             index++;
         }
 
-        ListNode afterTo = head;
+        LinkedNode afterTo = head;
         index = 1;
         while(beforeFrom != null && index < to + 1) {
             afterTo = afterTo.next;
@@ -72,9 +72,9 @@ public class ReverseLinkedList {
 
         // Reverse from and to
         curr = beforeFrom.next;
-        ListNode end = beforeFrom.next;
-        ListNode next = null;
-        ListNode prev = null;
+        LinkedNode end = beforeFrom.next;
+        LinkedNode next = null;
+        LinkedNode prev = null;
         for(int i = from; i <= to; i++) {
             next = curr.next;
             curr.next = prev;
@@ -93,7 +93,7 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
 
-        ListNode head = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5);
+        LinkedNode head = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5);
         head = reverseLinkedList(head);
         System.out.println(LinkedListUtils.printLinkedList(head));
 
@@ -101,7 +101,7 @@ public class ReverseLinkedList {
         dHead = reverseDoubleLinkedList(dHead);
         System.out.println(LinkedListUtils.printDoubleLinkedList(dHead));
 
-        ListNode pHead = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5, 6);
+        LinkedNode pHead = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5, 6);
         pHead = reversePartLinkedList(pHead, 1, 6);
         System.out.println(LinkedListUtils.printLinkedList(pHead));
     }

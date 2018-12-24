@@ -1,6 +1,5 @@
 package binarytree;
 
-import org.junit.Assert;
 import utils.TreeNode;
 import utils.TreeUtils;
 
@@ -31,6 +30,6 @@ public class FindRootToLeafPathWithSum {
 
         TreeNode root1 = TreeUtils.buildTree(314, 6, 6, 271, 561, 2, 271, 28, 0, null, 3, null, 1, null,
                 28, null, null, null, null, 17, null, 401, 257);
-        Assert.assertTrue(checkRootToLeafPath(root1, 591));
+        //Assert.assertTrue(checkRootToLeafPath(root1, 591));
     }
 }

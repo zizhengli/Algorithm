@@ -15,7 +15,6 @@ public class InorderIterativeTraserve {
             return;
         }
         Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
         TreeNode curr = root;
 
         while(curr != null || !stack.isEmpty()) {
