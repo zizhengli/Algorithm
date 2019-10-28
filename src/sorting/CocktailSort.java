@@ -3,7 +3,7 @@ package sorting;
 import utils.Swap;
 
 /**
- * Based on bubble sort, try to sort from both ends
+ * Based on bubble increaseSort, try to increaseSort from both ends
  */
 public class CocktailSort {
     static void sort(int A[]) {

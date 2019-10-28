@@ -5,7 +5,7 @@ package sorting;
  */
 public class BucketSort {
 
-    private static int[] bucket = new int[5]; // sort numbers from 0-49
+    private static int[] bucket = new int[5]; // increaseSort numbers from 0-49
 
     static void sort(int[] A) {
         if(A == null || A.length == 0) {
@@ -24,7 +24,7 @@ public class BucketSort {
         for(int i = 0; i < A.length; i++) {
             A[i] = temp[i];
         }
-        // Using insertion sort
+        // Using insertion increaseSort
         for(int i = 1; i < A.length; i++) {
             int current = A[i];
             int prev = i - 1;

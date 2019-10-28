@@ -24,7 +24,6 @@ public class QuickSort {
     }
 
     private static int partition(int start, int end, int[] array) {
-        int index = start;
         int smaller = start - 1;
         int pivot = end;
         for(int i = start; i < end; i++) {
@@ -39,7 +38,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] A = {16, 3, 1, 8, 5, 9, 10, 11, 3, 11, 20, 54, 23, 7};
-        HeapSort.sort(A);
+        QuickSort.sort(A);
         for(int i = 0; i < A.length; i++) {
             System.out.print(A[i] + " ");
         }

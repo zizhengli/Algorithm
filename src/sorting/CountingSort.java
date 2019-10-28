@@ -5,7 +5,7 @@ package sorting;
  */
 public class CountingSort {
 
-    private static int[] C = new int[100]; // sort number from 0 to 99
+    private static int[] C = new int[100]; // increaseSort number from 0 to 99
 
     static void sort(int[] A) {
         if(A == null || A.length == 0) {
@@ -14,7 +14,7 @@ public class CountingSort {
         for (int i = 0; i < C.length; i++) {
             C[i] = 0;
         }
-        // Array C it used to sort the numbers in array A by using the index of array
+        // Array C it used to increaseSort the numbers in array A by using the index of array
         for(int i = 0; i < A.length; i++) {
             C[A[i]]++;
         }
