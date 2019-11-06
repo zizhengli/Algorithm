@@ -1,8 +1,12 @@
 package heap;
 
+import javafx.scene.layout.Priority;
 import utils.ArrayUtils;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.PriorityQueue;
 
 /**
  * 给定String类型的数组strArr,再给定整数k,请严格按照排名顺序 打印出现次数前k名的字符串。
@@ -11,14 +15,6 @@ import java.util.HashMap;
  */
 public class PrintTopK {
 
-    static class Node {
-        String s;
-        int freq;
-        Node(String s, int freq) {
-            this.s = s;
-            this.freq = freq;
-        }
-    }
     public static void printTopK(String[] strings, int k) {
 
         HashMap<String, Integer> frequencyMap = new HashMap();
@@ -30,18 +26,32 @@ public class PrintTopK {
             }
         }
 
-        Node[] topK = new Node[k];
-        int index = 0;
+        PriorityQueue<Node> queue = new PriorityQueue<Node>(k, new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                return o1.freq - o2.freq;
+            }
+        });
+
         for(String s : frequencyMap.keySet()) {
             Node node = new Node(s, frequencyMap.get(s));
-            System.out.println(s + " " + frequencyMap.get(s));
-            if(index != k) {
-                topK[index++] = node;
-            } else {
-                minHeapify(topK, node);
+            if(queue.size() == k) {
+                if(frequencyMap.get(s) < queue.peek().freq) {
+                    continue;
+                }
+                queue.poll();
             }
+            queue.add(node);
         }
-        printHeap(topK);
+
+        for(String s : frequencyMap.keySet()) {
+            System.out.print(s + ":" + frequencyMap.get(s) + " ");
+        }
+
+        while(queue.size() > 0) {
+            System.out.println(queue.poll());
+        }
+
     }
 
     private static void printHeap(Node[] topK) {
@@ -51,7 +61,6 @@ public class PrintTopK {
     }
 
     private static void minHeapify(Node[] topK, Node s) {
-
         if(topK[0].freq < s.freq) {
             topK[0] = s;
             int index = 0;
@@ -75,6 +84,19 @@ public class PrintTopK {
         Node tmp = topK[a];
         topK[a] = topK[b];
         topK[b] = tmp;
+    }
+
+    private static class Node {
+        String s;
+        int freq;
+        Node(String s, int freq) {
+            this.s = s;
+            this.freq = freq;
+        }
+
+        public String toString() {
+            return s + ":" + freq;
+        }
     }
 
     public static void main(String[] args) {
