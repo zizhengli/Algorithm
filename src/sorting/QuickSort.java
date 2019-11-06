@@ -24,16 +24,16 @@ public class QuickSort {
     }
 
     private static int partition(int start, int end, int[] array) {
-        int smaller = start - 1;
+        int indexToPlace = start - 1;
         int pivot = end;
         for(int i = start; i < end; i++) {
             if(array[i] < array[pivot]) {
-                smaller++;
-                Swap.swap(array, i, smaller);
+                indexToPlace++;
+                Swap.swap(array, i, indexToPlace);
             }
         }
-        Swap.swap(array, ++smaller, pivot);
-        return smaller;
+        Swap.swap(array, ++indexToPlace, pivot);
+        return indexToPlace;
     }
 
     public static void main(String[] args) {

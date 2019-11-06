@@ -1,5 +1,7 @@
 package recursion;
 
+import utils.Swap;
+
 /**
  *
  */
@@ -12,27 +14,23 @@ public class Permutation {
         helper(array, array.length);
     }
 
-    private static void helper(int[] array, int k) {
-        if(k == 1) {
+    private static void helper(int[] array, int sizeToSwap) {
+        if(sizeToSwap == 1) {
             // Print current array
             for(int i = 0; i < array.length; i++) {
                 System.out.print(array[i] + " ");
             }
             System.out.println();
         }
-        for(int i = 0; i < k; i++) {
-            int temp = array[i];
-            array[i] = array[k - 1];
-            array[k - 1] = temp;
-            helper(array, k - 1);
-            temp = array[k - 1];
-            array[k - 1] = array[i];
-            array[i] = temp;
+        for(int i = 0; i < sizeToSwap; i++) {
+            Swap.swap(array, i, sizeToSwap - 1);
+            helper(array, sizeToSwap - 1);
+            Swap.swap(array, i, sizeToSwap - 1);
         }
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 2, 3000_0000};
+        int[] array = {1, 2, 3, 4};
         printPermutation(array);
 
     }
