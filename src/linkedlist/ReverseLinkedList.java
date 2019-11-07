@@ -10,7 +10,7 @@ import utils.LinkedNode;
  */
 public class ReverseLinkedList {
 
-    public static LinkedNode reverseLinkedList(LinkedNode head) {
+    static LinkedNode reverseLinkedList(LinkedNode head) {
         if(head == null) {
             return head;
         }
@@ -27,7 +27,24 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    public static DoubleListNode reverseDoubleLinkedList(DoubleListNode head) {
+    static LinkedNode reverseLinkedList2(LinkedNode head) {
+        if(head == null) {
+            return head;
+        }
+        LinkedNode next = null;
+        LinkedNode prev = null;
+
+        while(head != null) {
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
+    }
+
+
+    static DoubleListNode reverseDoubleLinkedList(DoubleListNode head) {
 
         DoubleListNode curr = head;
         DoubleListNode prev = null;
@@ -43,15 +60,17 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    public static LinkedNode reversePartLinkedList(LinkedNode head, int from, int to) {
-
+    static LinkedNode reversePartLinkedList(LinkedNode head, int from, int to) {
+        if(from < 0 || to < 0) {
+            return head;
+        }
         int length = 0;
         LinkedNode curr = head;
         while(curr != null) {
             length++;
             curr = curr.next;
         }
-        if(from < 0 || to < 0 || from > length || to > length || to < from) {
+        if(from > length || to > length || to < from) {
             return head;
         }
 
@@ -94,7 +113,7 @@ public class ReverseLinkedList {
     public static void main(String[] args) {
 
         LinkedNode head = LinkedListUtils.buildLinkedList(1, 2, 3, 4, 5);
-        head = reverseLinkedList(head);
+        head = reverseLinkedList2(head);
         System.out.println(LinkedListUtils.printLinkedList(head));
 
         DoubleListNode dHead = LinkedListUtils.buildDoubleLinkedList(1, 2, 3, 4, 5);

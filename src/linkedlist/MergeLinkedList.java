@@ -31,7 +31,7 @@ public class MergeLinkedList {
 
     public static void main(String[] args) {
 
-        LinkedNode head1 = LinkedListUtils.buildLinkedList(2, 3, 4, 8);
+        LinkedNode head1 = LinkedListUtils.buildLinkedList(2, 3, 4, 8, 10);
         LinkedNode head2 = LinkedListUtils.buildLinkedList(1, 2, 8, 9);
         LinkedNode head = MergeLinkedList.mergeLinkedList(head1, head2);
         System.out.println(LinkedListUtils.printLinkedList(head));

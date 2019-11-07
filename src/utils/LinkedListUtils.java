@@ -92,12 +92,15 @@ public class LinkedListUtils {
     public static String printCyclicLinkedList(LinkedNode head) {
         StringBuilder result = new StringBuilder();
         LinkedNode curr = head;
-        while(curr != null) {
+        result.append(curr.val);
+        result.append("->");
+        curr = curr.next;
+        while(curr != null && curr != head) {
             result.append(curr.val);
             result.append("->");
             curr = curr.next;
         }
-        result.append("null");
+        result.append("head");
         return result.toString();
     }
 }
