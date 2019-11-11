@@ -8,9 +8,9 @@ import java.util.Stack;
 /**
  *
  */
-public class PostorderIterativeTraversal {
+public class TreeTraversalPostOrder {
 
-    static void traverse(TreeNode root) {
+    static void iterativeTraverse(TreeNode root) {
         if(root == null) {
             return;
         }
@@ -35,6 +35,6 @@ public class PostorderIterativeTraversal {
 
     public static void main(String[] args) {
         TreeNode root = TreeUtils.buildTree(1, 2, 3, 4, 5, 6, 7, 8);
-        PostorderIterativeTraversal.traverse(root);
+        TreeTraversalPostOrder.iterativeTraverse(root);
     }
 }

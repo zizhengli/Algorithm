@@ -14,7 +14,7 @@ public class CheckIdenticalTreeInAnother {
 
     // O(t1 * t2)
     public static boolean checkIdenticalTree(TreeNode t1, TreeNode t2) {
-        // Using Morris Traversal to traverse t1
+        // Using Morris Traversal to iterativeTraverse t1
         TreeNode curr1 = t1;
         TreeNode curr2 = null;
 

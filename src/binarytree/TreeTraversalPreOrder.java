@@ -1,14 +1,33 @@
 package binarytree;
 
+import java.util.Stack;
+
 import utils.TreeNode;
 import utils.TreeUtils;
 
 /**
  *
  */
-public class PreorderMorrisTraversal {
+public class TreeTraversalPreOrder {
 
-    static void traverse(TreeNode root) {
+    static void iterativeTraverse(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while(stack.size() > 0) {
+            TreeNode node = stack.pop();
+            System.out.print(node.val + " ");
+            if(node.right != null)
+                stack.push(node.right);
+            if(node.left != null)
+                stack.push(node.left);
+        }
+    }
+
+    static void morrisTraverse(TreeNode root) {
         if(root == null) {
             return;
         }
@@ -38,6 +57,8 @@ public class PreorderMorrisTraversal {
 
     public static void main(String[] args) {
         TreeNode root = TreeUtils.buildTree(1, 2, 3, 4, 5, 6, 7, 8);
-        PreorderMorrisTraversal.traverse(root);
+        TreeTraversalPreOrder.morrisTraverse(root);
+        System.out.println();
+        TreeTraversalPreOrder.iterativeTraverse(root);
     }
 }

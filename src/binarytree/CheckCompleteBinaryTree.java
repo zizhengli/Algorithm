@@ -14,7 +14,7 @@ public class CheckCompleteBinaryTree {
      * 1. If current node has right child but no left child, return false.
      * 2. If current node is a leaf or has only left child then after this node each node should be a leaf.
      *
-     * We traverse the tree by level and apply these conditions
+     * We iterativeTraverse the tree by level and apply these conditions
      * */
     public static boolean isCompleteBinaryTree(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList();

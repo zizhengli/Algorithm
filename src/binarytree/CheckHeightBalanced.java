@@ -2,7 +2,6 @@ package binarytree;
 
 import utils.TreeNode;
 import utils.TreeUtils;
-//import static org.junit.Assert.*;
 
 /*
 * Variant: Write a program that returns the size of the largest subtree that is complete.
