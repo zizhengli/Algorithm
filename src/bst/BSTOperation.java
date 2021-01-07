@@ -55,35 +55,36 @@ public class BSTOperation {
         if(current == null) {
             return root;
         }
-        // If the node to delete has both child
-        if(current.left != null && current.right != null) {
-            TreeNode max = current.left;
-            TreeNode maxP = current;
-            while(max.right != null) {
-                maxP = max;
-                max = max.right;
-            }
-            // Swap value
-            int temp = current.val;
-            current.val = max.val;
-            max.val = temp;
-            parent = maxP;
-            current = max;
-        }
-        TreeNode child = null;
-        if(current.left != null) {
-            child = current.left;
-        } else if(current.right != null) {
-            child = current.right;
-        }
-        // The root is the node to delete
-        if(parent == null) {
-            root = child;
-        } else if(parent.left == current) {
-            parent.left = child;
+        TreeNode newChild = null;
+        if(current.left == null) {
+            newChild = current.right;
+        } else if(current.right == null) {
+            newChild = current.left;
         } else {
-            parent.right = child;
+            // Get minimum node
+            TreeNode min = current.right;
+            TreeNode minParent = current;
+            while(min.right != null) {
+                minParent = min;
+                min = min.left;
+            }
+            if(minParent == current) {
+                current.right.left = current.left;
+                newChild = current.right;
+            } else {
+                minParent.left = min.right;
+                min.left = current.left;
+                min.right = current.right;
+                newChild = min;
+            }
         }
+        if(parent.left == current) {
+            parent.left = newChild;
+        } else {
+            parent.right = newChild;
+        }
+        current.left = null;
+        current.right = null;
         return root;
     }
 
@@ -92,21 +93,20 @@ public class BSTOperation {
         TreeNode root = TreeUtils.buildTree(7, 5, 9, 3, 6, 8, 10);
         root = deleteNode(root, 5);
 
-        TreeNode test1 = TreeUtils.buildTree(7, 3, 9, null, 6, 8, 10);
-        TreeNode test2 = TreeUtils.buildTree(7, 6, 9, 3, null, 8, 10);
-
-        System.out.println(TreeUtils.compareTrees(root, test1) || TreeUtils.compareTrees(root, test2));
+        TreeNode test1 = TreeUtils.buildTree(7, 6, 9, 3, null, 8, 10);
+        System.out.println(TreeUtils.compareTrees(root, test1));
 
         TreeNode root1 = TreeUtils.buildTree(7, 5, 9, 3, 6, 8, 10);
         root1 = insertNode(root1, 1);
         TreeNode test3 = TreeUtils.buildTree(7, 5, 9, 3, 6, 8, 10, 1);
         System.out.println(TreeUtils.compareTrees(root1, test3));
-        root1 = deleteNode(root1, 1);
-        TreeNode test4 = TreeUtils.buildTree(7, 5, 9, 3, 6, 8, 10);
+
+        root1 = deleteNode(root1, 3);
+        TreeNode test4 = TreeUtils.buildTree(7, 5, 9, 1, 6, 8, 10);
         System.out.println(TreeUtils.compareTrees(root1, test4));
 
-        root1 = insertNode(root1, 5);
-        TreeNode test5 = TreeUtils.buildTree(7, 5, 9, 3, 5, 8, 10, null, null, null, 6);
+        root1 = deleteNode(root1, 5);
+        TreeNode test5 = TreeUtils.buildTree(7, 6, 9, 1, null, 8, 10);
         System.out.println(TreeUtils.compareTrees(root1, test5));
     }
 }

@@ -68,5 +68,7 @@ public class QuickSort {
         /*A = new int[] {16, 3, 7, 8, 7, 9, 10, 11, 3, 7, 20, 7, 23, 7};
         int[] res = threeWayPartition(A, 0, A.length - 1);
         System.out.print(res[0] + " " + res[1]);*/
+
+        boolean[] array = new boolean[Integer.MAX_VALUE];
     }
 }

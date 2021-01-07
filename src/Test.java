@@ -1,115 +1,144 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
 import javafx.util.Pair;
+import utils.LinkedListUtils;
+import utils.LinkedNode;
+import utils.LinkedNodeWithChild;
+import utils.TreeNode;
+import utils.TreeUtils;
 
 /**
  * Created by lim20 on 11/12/2018.
  */
 public class Test {
 
+    static LinkedNodeWithChild flattenLinkedList(LinkedNodeWithChild head) {
+        if(head == null) {
+            return head;
+        }
+        LinkedNodeWithChild curr = head;
+        LinkedNodeWithChild tail = getTail(head);
 
-
-
-    public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
-
-        Map<String, List<Node>> map = new HashMap();
-        for(int i = 0; i < equations.length; i++) {
-            if(map.containsKey(equations[i][0])) {
-                map.get(equations[i][0]).add(new Node(equations[i][1], values[i]));
-                // Reverse edge
-            } else {
-                List<Node> list = new ArrayList();
-                list.add(new Node(equations[i][1], values[i]));
-                map.put(equations[i][0], list);
+        while(curr != null) {
+            if(curr.child != null) {
+                tail.next = curr.child;
+                //curr = curr.child;
+                tail = getTail(curr.child);
             }
+            curr = curr.next;
+        }
+        return head;
+    }
 
-            // Reverse edge
-            if(map.containsKey(equations[i][1])) {
-                map.get(equations[i][1]).add(new Node(equations[i][0], Math.pow(values[i], -1)));
+    static LinkedNodeWithChild getTail(LinkedNodeWithChild node) {
+        if(node == null) {
+            return node;
+        }
+        LinkedNodeWithChild curr = node;
+        while(curr.next != null) {
+            curr = curr.next;
+        }
+        return curr;
+    }
+
+    static public int[] searchRange(int[] nums, int target) {
+        int[] result = new int[2];
+        result[0] = -1;
+        result[1] = -1;
+        if(nums == null || nums.length == 0) {
+            return result;
+        }
+
+        int low = 0;
+        int high = nums.length - 1;
+        int mid = 0;
+        int x = 0;
+        // Find left boundary
+        while(low <= high) {
+            mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                x = mid;
+            } else if(nums[mid] < target) {
+                low = mid + 1;
             } else {
-                List<Node> list1 = new ArrayList();
-                list1.add(new Node(equations[i][0], Math.pow(values[i], -1)));
-                map.put(equations[i][1], list1);
+                high = mid - 1;
             }
         }
-        //System.out.println(map);
-        Map<Pair<String, String>, Double> memo = new HashMap();
-
-        double[] result = new double[queries.length];
-        for(int i = 0; i < queries.length; i++) {
-            result[i] = dfs(queries[i][0], queries[i][1], map, 1.0, memo);
+        if(nums[x] != target) {
+            return result;
+        } else {
+            result[0] = x;
         }
+        // Find right boundary
+        low = 0;
+        high = nums.length - 1;
+        while(low < high) {
+            mid = low + (high - low) / 2 + 1;
+            if(nums[mid] > target) {
+                high = mid - 1;
+            } else {
+                low = mid;
+            }
+        }
+        result[1] = high;
         return result;
     }
 
-    private Double dfs(String curr, String end, Map<String, List<Node>> graph, double currRes, Map<Pair<String, String>, Double> memo) {
-        Pair<String, String> pair = new Pair(curr, end);
-        if(memo.containsKey(pair)) {
-            return memo.get(pair);
-        }
 
-        if(!graph.containsKey(curr) || graph.get(curr).size() == 0) {
-            return -1.0;
-        }
-
-        if(curr.equals(end)) {
-            return 1.0 * currRes;
-        }
-        Double result = null;
-        for(Node nei : graph.get(curr)) {
-            //System.out.println(curr + "_" + nei.dest + "_" + currRes * nei.weight);
-            result = dfs(nei.dest, end, graph, currRes * nei.weight, memo);
-            if(result != null) {
-                memo.put(pair, result);
-                return result;
-            }
-        }
-        memo.put(pair, null);
-        return null;
-    }
-
-    class Node {
-        String dest;
-        double weight;
-
-        Node(String dest, double weight) {
-            this.dest = dest;
-            this.weight = weight;
-        }
-    }
 
     public static void main(String[] args) {
 
-        char[][] board = {{'o','a','a','n'},
-                            {'e','t','a','e'},
-                            {'i','h','k','r'},
-                            {'i','f','l','v'}};
-        String[] words = {"oath","pea","eat","rain"};
+        LinkedNodeWithChild head = new LinkedNodeWithChild(1);
+        LinkedNodeWithChild node1 = new LinkedNodeWithChild(2);
+        LinkedNodeWithChild node2 = new LinkedNodeWithChild(3);
+        LinkedNodeWithChild node3 = new LinkedNodeWithChild(4);
+        LinkedNodeWithChild node4 = new LinkedNodeWithChild(5);
+        LinkedNodeWithChild node5 = new LinkedNodeWithChild(6);
+        LinkedNodeWithChild node6 = new LinkedNodeWithChild(7);
+        LinkedNodeWithChild node7 = new LinkedNodeWithChild(8);
+        LinkedNodeWithChild node8 = new LinkedNodeWithChild(9);
+        LinkedNodeWithChild node9 = new LinkedNodeWithChild(10);
 
 
-        Test test = new Test();
+        head.next = node1;
+        node1.child = node5;
+        node1.next = node2;
+        node2.next = node3;
+        node3.child = node6;
+        node3.next = node4;
+        node4.next = null;
+
+        node5.next = node7;
+        node7.child = node9;
+        node7.next = node8;
+
+        head = flattenLinkedList(head);
+
+        while(head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+        System.out.println("=======");
+
+        int[] array = {5,7,7,8,8,10};
+
+        //System.out.println(searchRange(array, 8));
 
 
-        System.out.println( 2/2 );
 
-
-
-        System.out.println(201 % 100);
-
-        Integer int1 = new Integer(1);
-        Integer int2 = new Integer(2);
-        System.out.println(int1 - int2);
-        int k = 3;
-        double tesstss = k % 2 == 0 ? 0.1 : 0.2;
-
-        boolean[] booean1 = new boolean[1];
-        System.out.println(booean1[0]);
+        System.out.println(3.1d / 3);
     }
 }
